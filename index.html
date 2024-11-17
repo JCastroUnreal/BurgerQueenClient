@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="burgerQueen">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+  <body>
+    <div class="container" ng-controller="CafeteriaController">
+      <h1>BURGER QUEEN</h1>
+
+      <div class="buttons">
+        <button ng-click="seeForm()">NEW PRODUCT</button>
+        <button ng-click="editProduct()">EDIT PRODUCT</button>
+        <button ng-click="removeProduct()">REMOVE PRODUCT</button>
+        <button ng-click="updateProduct()">UPDATE</button>
+      </div>
+
+      <!-- Ventana de nuevo producto -->
+      <form
+        id="screenNewProduct"
+        class="screen-new-product"
+        style="display: none"
+      >
+        <label>
+            NOMBRE: <input id="newProductName" type="text" placeholder="Nombre producto" required/>
+        </label>
+        <label> 
+            PRECIO: <input id="newProductPrice" type="number" placeholder="0.00" required/>
+        </label>
+        <label>
+            DESCRIPCION: <input id="newProductDescription" type="text" placeholder="Descripcion del producto" />
+        </label>
+        <button ng-click="newProduct()">ADD NEW PRODUCT</button>
+      </form>
+
+      <div class="product-list">
+        <h2>PRODUCT LIST</h2>
+        <div class="product" ng-repeat="product in products">
+          <p>{{ product.name }} - {{ product.price }} €</p>
+          <input type="checkbox" ng-model="product.seleccted" /> Seleccionar
+        </div>
+      </div>
+
+      <div class="order-list">
+        <h2>ORDER LIST</h2>
+        <div class="product" ng-repeat="product in products">
+          <p>{{ product.name }} - {{ product.price }}</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
